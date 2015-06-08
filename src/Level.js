@@ -16,9 +16,10 @@ Level = function (game, id, back, mid, front, ground) {
 	this.update = function (playerPos, playerVel) {
 		var scrollSpeed = -playerVel.x;
 		if (playerPos.x >= this.width / 2) {
+
 			// not 100 % correct, needs to be fixed to "line up"
-			this.mid.body.velocity.x = scrollSpeed / 3;
-			this.front.body.velocity.x = scrollSpeed / 2;
+			this.mid.body.velocity.x = scrollSpeed / 3.0;
+			this.front.body.velocity.x = scrollSpeed / 2.0;
 			this.ground.body.velocity.x = scrollSpeed;
 
 			playerPos.x = this.width / 2;
