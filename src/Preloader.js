@@ -14,6 +14,7 @@ VikingGame.Preloader.prototype = {
 		this.load.image('himmel', 'assets/Himmel.png');
 		this.load.image('fjall', 'assets/Fjall.png');
 		this.load.image('skog', 'assets/Skog.png');
+		this.load.image('ground', 'assets/Ground.png');
 
 		this.load.spritesheet('player', 'assets/Player.png', 19, 32);
 
