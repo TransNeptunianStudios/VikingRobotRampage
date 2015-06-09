@@ -19,17 +19,28 @@ Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
 Player.prototype.update = function () {
-	if (this.cursors.up.isDown)
+	this.isMoving = false;
+
+	if (this.cursors.up.isDown) {
 		this.body.velocity.y = -70;
-	else if (this.cursors.down.isDown)
+		this.isMoving = true;
+	} else if (this.cursors.down.isDown) {
 		this.body.velocity.y = 70;
-	else
+		this.isMoving = true;
+	} else
 		this.body.velocity.y = 0;
 
-	if (this.cursors.left.isDown)
+	if (this.cursors.left.isDown) {
 		this.body.velocity.x = -70;
-	else if (this.cursors.right.isDown)
+		this.animations.play('west');
+		this.isMoving = true;
+	} else if (this.cursors.right.isDown) {
 		this.body.velocity.x = 70;
-	else
+		this.animations.play('east');
+		this.isMoving = true;
+	} else
 		this.body.velocity.x = 0;
+
+	if (!this.isMoving)
+		this.frame = 2;
 };

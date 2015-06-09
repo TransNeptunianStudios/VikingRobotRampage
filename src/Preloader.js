@@ -1,12 +1,10 @@
-VikingGame.Preloader = function (game) {
-	VikingGame.WIDTH = 320;
-	VikingGame.HEIGHT = 200;
-};
+VikingGame.Preloader = function (game) {};
+
 VikingGame.Preloader.prototype = {
 	preload: function () {
 		// set background color and preload image
 		this.stage.backgroundColor = '#000000';
-		this.preloadBar = this.add.sprite((VikingGame.WIDTH - 311) / 2, (VikingGame.HEIGHT - 27) / 2, 'preloaderBar');
+		this.preloadBar = this.add.sprite((this.game.width - 311) / 2, (this.game.height - 27) / 2, 'preloaderBar');
 
 		this.load.setPreloadSprite(this.preloadBar);
 
