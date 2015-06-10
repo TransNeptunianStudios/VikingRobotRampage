@@ -9,24 +9,25 @@ Level = function (game, id, back, mid, front, ground) {
 	this.front = game.add.tileSprite(0, 0, game.width, game.height, front);
 	this.ground = game.add.sprite(0, 0, ground);
 
-	this.update = function (playerPos, playerVel) {
+	this.back.fixedToCamera = true;
+	this.mid.fixedToCamera = true;
+	this.front.fixedToCamera = true;
 
+	this.update = function (player) {
 		// Forward Scroll
-		if (playerVel.x > 0 && playerPos.x >= (this.camera.x + this.width / 2)) {
-			this.camera.x = playerPos.x - (this.width / 2);
-
-			this.back.x = this.camera.x;
-
+		if (player.isMoving && player.body.velocity.x > 0 && this.camera.x != 0) {
 			this.mid.tilePosition.x -= 0.3;
-			this.mid.x = this.camera.x;
-
-			this.front.tilePosition.x -= 0.7;
-			this.front.x = this.camera.x;
+			this.front.tilePosition.x -= 0.5;
 		}
 
 		// Backward Scroll
-		if (playerVel.x < 0 && playerPos.x <= this.camera.x) {
-			this.camera.x = playerPos.x;
+		if (player.isMoving && player.body.velocity.x < 0 && this.camera.x != 0) {
+			this.mid.tilePosition.x += 0.3;
+			this.front.tilePosition.x += 0.5;
 		}
+
+		// update level progress
+		if (player.x >= this.progress)
+			this.progress = player.x;
 	}
 }

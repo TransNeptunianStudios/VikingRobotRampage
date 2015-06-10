@@ -14,6 +14,9 @@ VikingGame.Boot.prototype = {
 		this.scale.pageAlignVertically = true;
 		this.scale.setScreenSize(true);*/
 
+		// To fix a choppy camera ( wierd as fck)
+		this.game.renderer.renderSession.roundPixels = true;
+
 		// start the Preloader state
 		this.state.start('Preloader');
 	}
