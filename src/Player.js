@@ -25,7 +25,7 @@ Player.prototype.constructor = Player;
 Player.prototype.update = function () {
 	this.isMoving = false;
 
-	if (this.cursors.up.isDown) {
+	if (this.cursors.up.isDown && this.y > 130) {
 		this.body.velocity.y = -70;
 		this.isMoving = true;
 	} else if (this.cursors.down.isDown) {
