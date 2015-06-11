@@ -25,7 +25,7 @@
 <body>
 	<script>
 		(function () {
-			var game = new Phaser.Game(400, 300, Phaser.CANVAS, 'Viking Robot Rampage');
+			var game = new Phaser.Game(400, 300, Phaser.CANVAS, 'Viking Robot Rampage', null, false, false);
 			game.state.add('Boot', VikingGame.Boot);
 			game.state.add('Preloader', VikingGame.Preloader);
 			game.state.add('Game', VikingGame.Game);

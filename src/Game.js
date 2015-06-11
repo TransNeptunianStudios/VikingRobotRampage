@@ -6,6 +6,7 @@ VikingGame.Game.prototype = {
 		// Add physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.world.setBounds(0, 0, 1600, this.game.height);
+		this.game.physics.arcade.setBounds(0, 120, 1600, this.game.height - 140);
 
 		// Level 1
 		this.currentLevel = new Level(this.game, 1, 'himmel', 'fjall', 'skog', 'ground');

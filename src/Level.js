@@ -14,7 +14,7 @@ Level = function (game, id, back, mid, front, ground) {
 	this.front.fixedToCamera = true;
 
 	this.update = function (player) {
-		// Forward Scroll
+		// Forward Scroll (( doesnt work when player reaches end....
 		if (player.isMoving && player.body.velocity.x > 0 && this.camera.x != 0) {
 			this.mid.tilePosition.x -= 0.3;
 			this.front.tilePosition.x -= 0.5;

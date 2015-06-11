@@ -8,11 +8,11 @@ VikingGame.Boot.prototype = {
 	},
 	create: function () {
 		// set scale options
-		/*this.input.maxPointers = 1;
+
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.scale.pageAlignHorizontally = true;
 		this.scale.pageAlignVertically = true;
-		this.scale.setScreenSize(true);*/
+		this.scale.setScreenSize(true);
 
 		// To fix a choppy camera ( wierd as fck)
 		this.game.renderer.renderSession.roundPixels = true;
