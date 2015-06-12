@@ -1,0 +1,23 @@
+var Levels = [
+	{
+		"nr": "1",
+		"Far-Back": "himmel",
+		"Back": "fjall",
+		"Front": "skog",
+		"Ground": "ground"
+	},
+	{
+		"nr": "2",
+		"Far-Back": "himmel",
+		"Back": "fjall",
+		"Front": "skog",
+		"Ground": "ground"
+	},
+	{
+		"nr": "3",
+		"Far-Back": "himmel",
+		"Back": "fjall",
+		"Front": "skog",
+		"Ground": "ground"
+	},
+];

@@ -13,10 +13,6 @@ Player = function (game, x, y) {
 	this.cursors = game.input.keyboard.createCursorKeys();
 
 	game.add.existing(this);
-
-	// camera setup
-	game.camera.follow(this);
-	//game.camera.deadzone = new Phaser.Rectangle(50, 0, game.width / 2, 0);
 };
 
 Player.prototype = Object.create(Phaser.Sprite.prototype);
