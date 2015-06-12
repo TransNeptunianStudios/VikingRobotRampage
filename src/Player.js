@@ -42,5 +42,5 @@ Player.prototype.update = function () {
 		this.body.velocity.x = 0;
 
 	if (!this.isMoving)
-		this.frame = 2;
+		this.frame = 3;
 };

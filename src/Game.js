@@ -14,7 +14,7 @@ VikingGame.Game.prototype = {
 		// Group for all things on the game board
 		this.onBoardStuff = this.game.add.group();
 
-		this.player = new Player(this.game, 100, 200);
+		this.player = new Player(this.game, 130, 170);
 		this.onBoardStuff.add(this.player);
 
 		this.superCamera = new SuperCamera(this.player, this.game);
