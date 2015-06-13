@@ -1,21 +1,21 @@
-var Levels = [
+var LevelsJson = [
 	{
 		"nr": "1",
-		"Far-Back": "himmel",
+		"FarBack": "himmel",
 		"Back": "fjall",
 		"Front": "skog",
 		"Ground": "ground"
 	},
 	{
 		"nr": "2",
-		"Far-Back": "himmel",
+		"FarBack": "himmel",
 		"Back": "fjall",
 		"Front": "skog",
 		"Ground": "ground"
 	},
 	{
 		"nr": "3",
-		"Far-Back": "himmel",
+		"FarBack": "himmel",
 		"Back": "fjall",
 		"Front": "skog",
 		"Ground": "ground"
