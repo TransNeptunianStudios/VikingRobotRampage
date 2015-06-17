@@ -8,26 +8,37 @@ VikingGame.Game.prototype = {
 		this.game.world.setBounds(0, 0, 1600, this.game.height);
 		this.game.physics.arcade.setBounds(0, 100, 1600, this.game.height - 120);
 
-
 		this.levels = this.importLevels();
 		this.currentLevel = this.levels[0];
+		this.currentLevel.start();
 
-		this.player = new Player(this.game, 130, 170);
+		this.player = new Player(this.game,
+			this.currentLevel.playerStart.x,
+			this.currentLevel.playerStart.y
+		);
 
 		// Group for all things on the game board
 		this.onBoardStuff = this.game.add.group();
 		this.onBoardStuff.add(this.player);
 
 		this.superCamera = new SuperCamera(this.player, this.game);
-
-		this.currentLevel.start();
 	},
 	update: function () {
 		this.currentLevel.update(this.superCamera);
 		if (this.currentLevel.isCompleted(this.player)) {
+			this.currentLevel.end();
+		} else if (this.currentLevel.readyToGo) {
+			this.levels.shift();
+			this.currentLevel = this.levels[0];
+			this.currentLevel.start();
+
+			this.game.world.bringToTop(this.onBoardStuff);
+			this.player.x = this.currentLevel.playerStart.x;
+			this.player.y = this.currentLevel.playerStart.y;
+
+			this.camera.reset();
 
 		}
-
 
 		this.onBoardStuff.forEach(function (item) {
 			// should be tweaked a lot
@@ -44,7 +55,8 @@ VikingGame.Game.prototype = {
 		return levels;
 	},
 	render: function () {
+		this.game.debug.text(this.game.time.fps || '--', 2, 14, "#a7aebe");
 		//this.game.debug.cameraInfo(this.game.camera, 32, 32);
-	}
+	},
 
 };
