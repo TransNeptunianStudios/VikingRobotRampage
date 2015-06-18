@@ -36,7 +36,7 @@ VikingGame.Game.prototype = {
 			this.player.x = this.currentLevel.playerStart.x;
 			this.player.y = this.currentLevel.playerStart.y;
 
-			this.camera.reset();
+			this.camera = new SuperCamera(this.player, this.game);
 
 		}
 
