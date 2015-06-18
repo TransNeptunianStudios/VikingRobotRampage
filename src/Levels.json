@@ -1,14 +1,37 @@
 var LevelsJson = [
 	{
 		"nr": "1",
-		"FarBack": "fjall",
-		"Back": "himmel",
+		"FarBack": "himmel",
+		"Back": "fjall",
 		"Front": "skog",
-		"Ground": "ground"
+		"Ground": "ground",
+		"Obstacles": [
+			{
+				"type": "stone",
+				"x": 350,
+				"y": 200
+			},
+			{
+				"type": "stone",
+				"x": 550,
+				"y": 250
+			},
+			{
+				"type": "stone",
+				"x": 750,
+				"y": 120
+			},
+			{
+				"type": "stone",
+				"x": 900,
+				"y": 150
+			},
+
+		]
 	},
 	{
 		"nr": "2",
-		"FarBack": "himmel",
+		"FarBack": "fjall",
 		"Back": "fjall",
 		"Front": "skog",
 		"Ground": "ground"

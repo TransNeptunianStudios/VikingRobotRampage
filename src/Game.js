@@ -6,9 +6,12 @@ VikingGame.Game.prototype = {
 		// Add physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.world.setBounds(0, 0, 1600, this.game.height);
-		this.game.physics.arcade.setBounds(0, 100, 1600, this.game.height - 120);
+		this.game.physics.arcade.setBounds(0, 100, 1600, this.game.height - 100);
 
-		this.levels = this.importLevels();
+		this.onBoardStuff = this.game.add.group();
+
+		this.levels = [];
+		this.importLevels();
 		this.currentLevel = this.levels[0];
 		this.currentLevel.start();
 
@@ -18,7 +21,6 @@ VikingGame.Game.prototype = {
 		);
 
 		// Group for all things on the game board
-		this.onBoardStuff = this.game.add.group();
 		this.onBoardStuff.add(this.player);
 
 		this.superCamera = new SuperCamera(this.player, this.game);
@@ -32,7 +34,7 @@ VikingGame.Game.prototype = {
 			this.currentLevel = this.levels[0];
 			this.currentLevel.start();
 
-			this.game.world.bringToTop(this.onBoardStuff);
+
 			this.player.position.x = this.currentLevel.playerStart.x;
 			this.player.position.y = this.currentLevel.playerStart.y;
 		}
@@ -42,17 +44,33 @@ VikingGame.Game.prototype = {
 			var perspective = 0.7 + (item.y / this.game.height);
 			item.scale.setTo(perspective);
 		}, this);
+
+		this.game.world.bringToTop(this.onBoardStuff);
+		this.onBoardStuff.sort('y', Phaser.Group.SORT_ASCENDING);
+
 	},
 	importLevels: function () {
-		var levels = [];
 		for (i in LevelsJson) {
-			var lvl = LevelsJson[i];
-			levels.push(new Level(this.game, lvl.nr, lvl.FarBack, lvl.Back, lvl.Front, lvl.Ground));
+			var lvlJson = LevelsJson[i];
+			var level = new Level(this.game, lvlJson);
+
+			var obst = []
+			if (lvlJson.Obstacles) {
+				lvlJson.Obstacles.forEach(function (item) {
+					var obst = new Obstacle(this.game,
+						lvlJson.Obstacles.length,
+						item.type,
+						item.x,
+						item.y);
+					this.onBoardStuff.add(obst);
+					level.addObstacles(obst);
+				}, this);
+			}
+			this.levels.push(level);
 		}
-		return levels;
 	},
 	render: function () {
-		this.game.debug.text(this.game.time.fps || '--', 2, 14, "#a7aebe");
+		//this.game.debug.text(this.game.time.fps, 2, 14, "#a7aebe");
 		//this.game.debug.cameraInfo(this.game.camera, 32, 32);
 	},
 

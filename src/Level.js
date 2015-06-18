@@ -1,29 +1,37 @@
-Level = function (game, id, back, mid, front, ground) {
+Level = function (game, jsonInfo) {
 
 	this.game = game;
+
 	this.active = false;
 	this.readyToGo = false;
+
+	this.obstacles = [];
+	this.farBack = jsonInfo.FarBack;
+	this.back = jsonInfo.Back;
+	this.front = jsonInfo.Front;
+	this.ground = jsonInfo.Ground;
 
 	this.playerStart = {
 		x: 130,
 		y: 200
-	};
+	}
 
 	this.start = function () {
 		// Init parallax background and ground
-		this.back = game.add.sprite(0, 0, back);
-		this.mid = game.add.tileSprite(0, 0, game.width, game.height, mid);
-		this.front = game.add.tileSprite(0, 0, game.width, game.height, front);
-		this.ground = game.add.sprite(0, 0, ground);
+		this.farBack = game.add.sprite(0, 0, this.farBack);
+		this.back = game.add.tileSprite(0, 0, game.width, game.height, this.back);
+		this.front = game.add.tileSprite(0, 0, game.width, game.height, this.front);
+		this.ground = game.add.sprite(0, 0, this.ground);
 
 		this.length = this.ground.width;
 
+		this.farBack.fixedToCamera = true;
 		this.back.fixedToCamera = true;
-		this.mid.fixedToCamera = true;
 		this.front.fixedToCamera = true;
 
-		this.game.world.alpha = 0;
+		this.addObstacles();
 
+		this.game.world.alpha = 0;
 		this.fadeTo(1, 2000, 0);
 
 		this.active = true;
@@ -41,6 +49,7 @@ Level = function (game, id, back, mid, front, ground) {
 	}
 
 	this.fadeTo = function (alpha, dt, to) {
+
 		var fade = this.game.add.tween(this.game.world).to({
 			alpha: alpha
 		}, dt, Phaser.Easing.Linear.None, false, to);
@@ -54,15 +63,19 @@ Level = function (game, id, back, mid, front, ground) {
 
 		// Forward Scroll (( doesnt work when player reaches end....
 		if (camera.isScrollingRight()) {
-			this.mid.tilePosition.x -= 0.3;
+			this.back.tilePosition.x -= 0.3;
 			this.front.tilePosition.x -= 0.5;
 		}
 
 		// Backward Scroll
 		if (camera.isScrollingLeft()) {
-			this.mid.tilePosition.x += 0.3;
+			this.back.tilePosition.x += 0.3;
 			this.front.tilePosition.x += 0.5;
 		}
+	}
+
+	this.addObstacles = function (obstacles) {
+		this.obstacles.push(obstacles);
 	}
 
 	this.isCompleted = function (player) {

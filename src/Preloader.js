@@ -14,6 +14,8 @@ VikingGame.Preloader.prototype = {
 		this.load.image('skog', 'assets/Skog.png');
 		this.load.image('ground', 'assets/Ground.png');
 
+		this.load.image('stone', 'assets/Stone.png');
+
 		this.load.spritesheet('player', 'assets/Player.png', 19, 32);
 
 	},
