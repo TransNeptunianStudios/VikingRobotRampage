@@ -33,11 +33,8 @@ VikingGame.Game.prototype = {
 			this.currentLevel.start();
 
 			this.game.world.bringToTop(this.onBoardStuff);
-			this.player.x = this.currentLevel.playerStart.x;
-			this.player.y = this.currentLevel.playerStart.y;
-
-			this.camera = new SuperCamera(this.player, this.game);
-
+			this.player.position.x = this.currentLevel.playerStart.x;
+			this.player.position.y = this.currentLevel.playerStart.y;
 		}
 
 		this.onBoardStuff.forEach(function (item) {

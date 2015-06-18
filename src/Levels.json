@@ -1,8 +1,8 @@
 var LevelsJson = [
 	{
 		"nr": "1",
-		"FarBack": "himmel",
-		"Back": "fjall",
+		"FarBack": "fjall",
+		"Back": "himmel",
 		"Front": "skog",
 		"Ground": "ground"
 	},
