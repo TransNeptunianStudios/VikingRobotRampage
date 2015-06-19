@@ -7,14 +7,14 @@ var LevelsJson = [
 		"Ground": "ground",
 		"Obstacles": [
 			{
-				"type": "rune",
-				"x": 350,
-				"y": 170
-			},
-			{
 				"type": "stone",
 				"x": 550,
 				"y": 250
+			},
+			{
+				"type": "sword viking",
+				"x": 600,
+				"y": 170
 			},
 			{
 				"type": "rune",
@@ -39,7 +39,7 @@ var LevelsJson = [
 	{
 		"nr": "3",
 		"FarBack": "himmel",
-		"Back": "fjall",
+		"Back": "himmel",
 		"Front": "skog",
 		"Ground": "ground"
 	},

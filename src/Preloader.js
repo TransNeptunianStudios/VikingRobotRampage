@@ -18,6 +18,7 @@ VikingGame.Preloader.prototype = {
 		this.load.image('rune', 'assets/Rune.png');
 
 		this.load.spritesheet('player', 'assets/Player.png', 19, 32);
+		this.load.spritesheet('sword viking', 'assets/Enemy.png', 17, 32);
 
 	},
 	create: function () {

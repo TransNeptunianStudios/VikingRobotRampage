@@ -6,20 +6,18 @@ VikingGame.Game.prototype = {
 		// Add physics
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.game.world.setBounds(0, 0, 1600, this.game.height);
-		this.game.physics.arcade.setBounds(0, 100, 1600, this.game.height - 130);
+		this.game.physics.arcade.setBounds(0, 100, 1600, this.game.height - 110);
 
 		this.onBoardStuff = this.game.add.group();
+
+
+		this.player = new Player(this.game, 120, 120);
 
 		this.levels = [];
 		this.importLevels();
 		this.currentLevel = this.levels[0];
 		this.currentLevel.start();
-		//this.currentLevel.kill();
 
-		this.player = new Player(this.game,
-			this.currentLevel.playerStart.x,
-			this.currentLevel.playerStart.y
-		);
 
 		// Group for all things on the game board
 		this.onBoardStuff.add(this.player);
@@ -28,6 +26,7 @@ VikingGame.Game.prototype = {
 	},
 	update: function () {
 		this.currentLevel.update(this.superCamera);
+
 		if (this.currentLevel.isCompleted(this.player)) {
 			this.currentLevel.end();
 		} else if (this.currentLevel.readyToGo) {
@@ -62,7 +61,10 @@ VikingGame.Game.prototype = {
 						lvlJson.Obstacles.length,
 						item.type,
 						item.x,
-						item.y);
+						item.y,
+						this.player);
+
+					this.game.physics.arcade.enable(obst);
 					this.onBoardStuff.add(obst);
 					level.addObstacles(obst);
 				}, this);
