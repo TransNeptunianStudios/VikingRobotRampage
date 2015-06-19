@@ -10,8 +10,7 @@ VikingGame.Game.prototype = {
 
 		this.onBoardStuff = this.game.add.group();
 
-
-		this.player = new Player(this.game, 120, 120);
+		this.player = new Player(this.game, 120, 200);
 
 		this.levels = [];
 		this.importLevels();

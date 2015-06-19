@@ -19,43 +19,26 @@ Player = function (game, x, y) {
 Player.prototype = Object.create(Phaser.Sprite.prototype);
 Player.prototype.constructor = Player;
 
+Player.prototype.movingAround = Trait.prototype.movingAround;
+
 Player.prototype.update = function (game) {
 
 }
 
 Player.prototype.update = function () {
-	this.isMovingHorz = false;
-	this.isMovingVert = false;
+	this.movingAround();
 
-	if (this.cursors.up.isDown) {
+	if (this.cursors.up.isDown)
 		this.body.velocity.y = -70;
-		this.isMovingVert = true;
-	} else if (this.cursors.down.isDown) {
-		this.isMovingVert = true;
+	else if (this.cursors.down.isDown)
 		this.body.velocity.y = 70;
-	} else
+	else
 		this.body.velocity.y = 0;
 
-	if (this.cursors.left.isDown) {
+	if (this.cursors.left.isDown)
 		this.body.velocity.x = -70;
-		this.facingEast = false;
-		this.isMovingHorz = true;
-	} else if (this.cursors.right.isDown) {
+	else if (this.cursors.right.isDown)
 		this.body.velocity.x = 70;
-		this.facingEast = true;
-		this.isMovingHorz = true;
-	} else
+	else
 		this.body.velocity.x = 0;
-
-	if (this.facingEast) {
-		if (this.isMovingHorz || this.isMovingVert)
-			this.animations.play('east');
-		else
-			this.frame = 3;
-	} else {
-		if (this.isMovingHorz || this.isMovingVert)
-			this.animations.play('west');
-		else
-			this.frame = 1;
-	}
 };

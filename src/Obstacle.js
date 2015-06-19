@@ -19,6 +19,9 @@ Obstacle = function (game, id, type, x, y, player) {
 		game.physics.arcade.enable(this);
 		this.kickingAss = false;
 
+		this.movingAround = Trait.prototype.movingAround;
+		this.Ai = Trait.prototype.swordViking;
+
 		break;
 	default:
 		Phaser.Sprite.call(this, game, x, y, 'stone');
@@ -33,11 +36,14 @@ Obstacle.prototype = Object.create(Phaser.Sprite.prototype);
 Obstacle.prototype.constructor = Obstacle;
 
 Obstacle.prototype.update = function () {
-	if (this.type == 'sword viking' && this.game.camera.x > this.x - this.game.width)
+	if (this.game.camera.x > this.x - this.game.width)
 		this.kickingAss = true;
 
 	if (this.kickingAss) {
-		// chase our hero
-		this.game.physics.arcade.moveToObject(this, this.player, 50);
+		if (this.movingAround)
+			this.movingAround();
+
+		if (this.Ai)
+			this.Ai();
 	}
 }
