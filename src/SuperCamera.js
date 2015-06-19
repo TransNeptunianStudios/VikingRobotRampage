@@ -3,7 +3,7 @@ SuperCamera = function (player, game) {
 	this.player = player;
 	this.worldWidth = game.world.width;
 	this.camera.follow(this.player);
-	this.camera.deadzone = new Phaser.Rectangle(50, 0, (game.width / 2) - 50, 0);
+	this.camera.deadzone = new Phaser.Rectangle(50, 0, game.width - 200, 0);
 
 	// if the player is on the left side...
 	this.isScrollingLeft = function () {

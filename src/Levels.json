@@ -9,7 +9,7 @@ var LevelsJson = [
 			{
 				"type": "rune",
 				"x": 350,
-				"y": 200
+				"y": 170
 			},
 			{
 				"type": "stone",
@@ -19,12 +19,12 @@ var LevelsJson = [
 			{
 				"type": "rune",
 				"x": 750,
-				"y": 120
+				"y": 140
 			},
 			{
 				"type": "stone",
 				"x": 900,
-				"y": 150
+				"y": 200
 			},
 
 		]

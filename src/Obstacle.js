@@ -10,7 +10,9 @@ Obstacle = function (game, id, type, x, y) {
 		Phaser.Sprite.call(this, game, x, y, 'stone');
 	}
 
+	this.anchor.setTo(0.5, 1);
 	this.type = type;
+
 	game.add.existing(this);
 }
 Obstacle.prototype = Object.create(Phaser.Sprite.prototype);
