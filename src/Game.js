@@ -14,6 +14,7 @@ VikingGame.Game.prototype = {
 		this.importLevels();
 		this.currentLevel = this.levels[0];
 		this.currentLevel.start();
+		//this.currentLevel.kill();
 
 		this.player = new Player(this.game,
 			this.currentLevel.playerStart.x,
@@ -30,10 +31,10 @@ VikingGame.Game.prototype = {
 		if (this.currentLevel.isCompleted(this.player)) {
 			this.currentLevel.end();
 		} else if (this.currentLevel.readyToGo) {
+			this.currentLevel.kill();
 			this.levels.shift();
 			this.currentLevel = this.levels[0];
 			this.currentLevel.start();
-
 
 			this.player.position.x = this.currentLevel.playerStart.x;
 			this.player.position.y = this.currentLevel.playerStart.y;

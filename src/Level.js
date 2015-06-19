@@ -29,8 +29,6 @@ Level = function (game, jsonInfo) {
 		this.back.fixedToCamera = true;
 		this.front.fixedToCamera = true;
 
-		this.addObstacles();
-
 		this.game.world.alpha = 0;
 		this.fadeTo(1, 2000, 0);
 
@@ -45,6 +43,18 @@ Level = function (game, jsonInfo) {
 		this.fadeTo(0, fadetime, 0);
 		game.time.events.add(fadetime + 2000, function () {
 			this.readyToGo = true;
+		}, this);
+	}
+
+	this.kill = function () {
+		this.farBack.kill();
+		this.back.kill();
+		this.front.kill();
+		this.ground.kill();
+
+		this.obstacles.forEach(function (item) {
+			// should be tweaked a lot
+			item.kill();
 		}, this);
 	}
 

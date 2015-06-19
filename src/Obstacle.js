@@ -3,6 +3,9 @@ Obstacle = function (game, id, type, x, y) {
 	case 'stone':
 		Phaser.Sprite.call(this, game, x, y, 'stone');
 		break;
+	case 'rune':
+		Phaser.Sprite.call(this, game, x, y, 'rune');
+		break;
 	default:
 		Phaser.Sprite.call(this, game, x, y, 'stone');
 	}

@@ -31,6 +31,19 @@
 <body>
 	<script>
 		(function () {
+			// Ugly phaser fix (where to put?)
+			Phaser.TileSprite.prototype.kill = function () {
+				this.stopScroll();
+				this.alive = false;
+				this.exists = false;
+				this.visible = false;
+				if (this.events) {
+					this.events.onKilled.dispatch(this);
+				}
+				return this;
+			};
+
+			// game start
 			var game = new Phaser.Game(400, 300, Phaser.CANVAS, 'Viking Robot Rampage', null, false, false);
 			game.state.add('Boot', VikingGame.Boot);
 			game.state.add('Preloader', VikingGame.Preloader);
