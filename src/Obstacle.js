@@ -6,9 +6,13 @@ Obstacle = function (game, id, type, x, y, player) {
 	switch (this.type) {
 	case 'stone':
 		Phaser.Sprite.call(this, game, x, y, 'stone');
+		this.hp = 10;
+		this.immovable = true;
 		break;
 	case 'rune':
 		Phaser.Sprite.call(this, game, x, y, 'rune');
+		this.hp = 7;
+		this.immovable = true;
 		break;
 	case 'sword viking':
 		Phaser.Sprite.call(this, game, x, y, 'sword viking');
@@ -18,8 +22,9 @@ Obstacle = function (game, id, type, x, y, player) {
 
 		game.physics.arcade.enable(this);
 		this.kickingAss = false;
+		this.attacking = false;
+		this.hp = 4;
 
-		this.movingAround = Trait.prototype.movingAround;
 		this.Ai = Trait.prototype.swordViking;
 
 		break;
@@ -40,10 +45,10 @@ Obstacle.prototype.update = function () {
 		this.kickingAss = true;
 
 	if (this.kickingAss) {
-		if (this.movingAround)
-			this.movingAround();
-
 		if (this.Ai)
 			this.Ai();
 	}
+
+	if (this.hp <= 0)
+		this.kill();
 }

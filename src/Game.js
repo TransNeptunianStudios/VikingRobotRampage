@@ -25,6 +25,7 @@ VikingGame.Game.prototype = {
 	},
 	update: function () {
 		this.currentLevel.update(this.superCamera);
+		this.player.update(this.currentLevel.obstacles);
 
 		if (this.currentLevel.isCompleted(this.player)) {
 			this.currentLevel.end();

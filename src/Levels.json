@@ -13,7 +13,7 @@ var LevelsJson = [
 			},
 			{
 				"type": "sword viking",
-				"x": 600,
+				"x": 300,
 				"y": 170
 			},
 			{
