@@ -2,6 +2,7 @@ Player = function (game, x, y) {
 	Phaser.Sprite.call(this, game, x, y, 'player');
 	this.anchor.setTo(0.5, 1);
 	this.attacking = false;
+	this.hp = 10;
 
 	this.animations.add('west', [12, 13, 14, 15, 16, 17, 18, 19], 15, true);
 	this.animations.add('east', [28, 29, 30, 31, 32, 33, 34, 35], 15, true);

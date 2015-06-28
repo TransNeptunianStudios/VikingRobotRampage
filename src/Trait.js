@@ -87,13 +87,12 @@ lightAttackCompleted = function (enemy) {
 
 	if (Phaser.Rectangle.intersects(boundsA, boundsB)) {
 		enemy.hp -= 1;
-		console.log("HIT!");
 
 		if (!enemy.immovable)
-			if (enemy.facingEast)
-				enemy.position.x -= 7;
-			else
+			if (this.facingEast)
 				enemy.position.x += 7;
+			else
+				enemy.position.x -= 7;
 
 	}
 	this.attacking = false;

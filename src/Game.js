@@ -17,15 +17,17 @@ VikingGame.Game.prototype = {
 		this.currentLevel = this.levels[0];
 		this.currentLevel.start();
 
-
 		// Group for all things on the game board
 		this.onBoardStuff.add(this.player);
+
+		this.GUI = new GUI(this.game, this.player.hp);
 
 		this.superCamera = new SuperCamera(this.player, this.game);
 	},
 	update: function () {
 		this.currentLevel.update(this.superCamera);
 		this.player.update(this.currentLevel.obstacles);
+		this.GUI.update(this.player.hp);
 
 		if (this.currentLevel.isCompleted(this.player)) {
 			this.currentLevel.end();
